@@ -13,7 +13,6 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -27,7 +26,7 @@ public class DropboxClientITest {
     private static final String ACCESS_TOKEN = PropertyLoader.getProperty(DROPBOX_TOKEN);
 
     @Test
-    public void shouldReturnResponse() throws DbxException, FileNotFoundException {
+    public void shouldReturnResponse() throws DbxException{
         DbxRequestConfig config = new DbxRequestConfig("dropbox/java-tutorial", "en_US");
         DbxClientV2 client = new DbxClientV2(config, ACCESS_TOKEN);
         FullAccount account = client.users().getCurrentAccount();
