@@ -16,6 +16,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+import static com.myschooljournal.service.dropboxservice.DropboxClient.DROPBOX_CLIENT;
 import static com.myschooljournal.service.ServiceConstants.DROPBOX_TOKEN;
 
 @Ignore("This is integration test for dropboxclient")
@@ -27,7 +28,9 @@ public class DropboxClientITest {
 
     @Test
     public void shouldReturnResponse() throws DbxException{
-        DbxRequestConfig config = new DbxRequestConfig("dropbox/java-tutorial", "en_US");
+        DbxRequestConfig config =DbxRequestConfig.newBuilder("dropbox/java-tutorial")
+                .withUserLocale("en_US")
+                .build();
         DbxClientV2 client = new DbxClientV2(config, ACCESS_TOKEN);
         FullAccount account = client.users().getCurrentAccount();
         System.out.println(account.getName().getDisplayName());
@@ -47,7 +50,7 @@ public class DropboxClientITest {
             result = client.files().listFolderContinue(result.getCursor());
 
         } // Upload "test.txt" to Dropbox
-        try (InputStream in = new FileInputStream("/Users/nataliyaroshchyna/IdeaProjects/journal_desktop/src/test/resources/test.txt")) {
+        try (InputStream in = new FileInputStream(FILE_PATH)) {
             FileMetadata metadata = client.files().uploadBuilder("/test.txt")
                    .uploadAndFinish(in);
         } catch (IOException e) {
@@ -57,7 +60,17 @@ public class DropboxClientITest {
 
     @Test
     public void shouldUploadFileToDropbox(){
-        DropboxClient.DROPBOX_CLIENT.uploadFile(FILE_PATH,"/file/test.txt");
+        DROPBOX_CLIENT.uploadFile(FILE_PATH,"/file1/test.txt");
+
 
     }
+
+    @Test
+    public void shouldReturnUploadedFile(){
+       DROPBOX_CLIENT.downloadFile("test.txt","/file1/test.txt");
+
+
+    }
+
+
 }
