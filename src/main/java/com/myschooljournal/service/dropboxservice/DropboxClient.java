@@ -1,7 +1,6 @@
 package com.myschooljournal.service.dropboxservice;
 
 
-import com.dropbox.core.DbxApiException;
 import com.dropbox.core.DbxDownloader;
 import com.dropbox.core.DbxException;
 import com.dropbox.core.DbxRequestConfig;

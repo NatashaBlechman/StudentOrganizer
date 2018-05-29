@@ -94,7 +94,7 @@ public class ActivityDaoImplTest {
         try {
             activityDao.update(2L, null);
         } catch (IllegalArgumentException e) {
-            assertEquals("wrong! activity unillegal!", e.getMessage());
+            assertEquals("Activity is null!", e.getMessage());
             throw e;
         }
 

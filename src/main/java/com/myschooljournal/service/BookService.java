@@ -2,16 +2,20 @@ package com.myschooljournal.service;
 
 import com.myschooljournal.dao.BookDao;
 import com.myschooljournal.entity.Book;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 import java.util.List;
 
-
+@Service("bookService")
 public class BookService {
 
     private BookDao bookDao;
 
-    public   BookService(BookDao bookDao){
+    @Autowired
+    public   BookService(@Qualifier("bookDao") BookDao bookDao){
         this.bookDao=bookDao;
     }
 

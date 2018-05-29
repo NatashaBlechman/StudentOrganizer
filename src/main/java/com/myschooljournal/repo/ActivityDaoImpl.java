@@ -4,6 +4,7 @@ import com.myschooljournal.dao.ActivityDao;
 import com.myschooljournal.entity.Activity;
 import com.myschooljournal.entity.Lesson;
 import com.myschooljournal.workservice.DateWorkService;
+import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
 import java.util.Collection;
@@ -14,6 +15,7 @@ import java.util.stream.Collectors;
 
 import static com.myschooljournal.workservice.Validator.idValidation;
 
+@Repository("activityDao")
 public class ActivityDaoImpl implements ActivityDao {
 
     private static Map<Long, Activity> activityRepo = new HashMap<>();
@@ -50,8 +52,7 @@ public class ActivityDaoImpl implements ActivityDao {
     @Override
     public Activity update(Long id, Activity activity) {
         if (activity == null) {
-            //TODO:massage!
-            throw new IllegalArgumentException("wrong! activity unillegal!");
+            throw new IllegalArgumentException("Activity is null!");
         }
         activity.setId(id);
         activityRepo.put(id, activity);

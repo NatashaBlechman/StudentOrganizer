@@ -3,18 +3,20 @@ package com.myschooljournal.service;
 import com.myschooljournal.dao.MarkDao;
 import com.myschooljournal.entity.Lesson;
 import com.myschooljournal.entity.Mark;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
-
+@Service("markService")
 public class MarkService {
 
 	private MarkDao markDao;
 
-
-
-	public MarkService(MarkDao markDao){
+@Autowired
+	public MarkService(@Qualifier("markDao") MarkDao markDao){
 		super();
 		this.markDao=markDao;
 	}

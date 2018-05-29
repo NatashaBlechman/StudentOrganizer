@@ -3,6 +3,7 @@ package com.myschooljournal.repo;
 import com.myschooljournal.dao.TaskDao;
 import com.myschooljournal.entity.Task;
 import com.myschooljournal.workservice.DateWorkService;
+import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
 import java.util.Collection;
@@ -12,9 +13,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class
-
-TaskDaoImpl implements TaskDao{
+@Repository("taskDao")
+public class TaskDaoImpl implements TaskDao{
 	
 	private static Map<Long,Task> taskRepo=new HashMap<>();//отображение БД
 	private static Long idGen=1L;

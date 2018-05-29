@@ -2,16 +2,21 @@ package com.myschooljournal.service;
 
 import com.myschooljournal.dao.TaskDao;
 import com.myschooljournal.entity.Task;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
 
+@Service("taskService")
 public class TaskService {
 	
 	private TaskDao taskDao;
 
-	public TaskService(TaskDao taskDao) {
+@Autowired
+	public TaskService(@Qualifier("taskDao") TaskDao taskDao) {
 		super();
 		this.taskDao = taskDao;
 	}

@@ -3,17 +3,20 @@ package com.myschooljournal.service;
 import com.myschooljournal.dao.TeacherDao;
 import com.myschooljournal.entity.Lesson;
 import com.myschooljournal.entity.Teacher;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 
-
+@Service("teacherService")
 public class TeacherService {
 	
 	
 	private TeacherDao teacherDao;
 
-
-	public TeacherService(TeacherDao teacherDao){
+@Autowired
+	public TeacherService(@Qualifier("teacherDao") TeacherDao teacherDao){
 		super();
 		this.teacherDao=teacherDao;
 	}
@@ -70,8 +73,5 @@ public class TeacherService {
 	{
 		return teacherDao.getByLesson(lesson);
 	}
-
-
-
 
 }

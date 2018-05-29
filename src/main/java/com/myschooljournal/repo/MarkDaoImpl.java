@@ -4,6 +4,7 @@ import com.myschooljournal.dao.MarkDao;
 import com.myschooljournal.entity.Lesson;
 import com.myschooljournal.entity.Mark;
 import com.myschooljournal.workservice.DateWorkService;
+import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
 import java.util.Collection;
@@ -13,6 +14,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+@Repository("markDao")
 public class MarkDaoImpl implements MarkDao{
 	
 	private static Map<Long,Mark> markRepo=new HashMap<>();

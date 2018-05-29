@@ -3,11 +3,13 @@ package com.myschooljournal.repo;
 import com.myschooljournal.dao.TeacherDao;
 import com.myschooljournal.entity.Lesson;
 import com.myschooljournal.entity.Teacher;
+import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+@Repository("teacherDao")
 public class TeacherDaoImpl implements TeacherDao {
 
     private static Map<Long, Teacher> teacherRepo = new HashMap<>();

@@ -55,7 +55,6 @@ public class TeacherDaoImplTest {
 
     @Test
     public void shouldReturnAllTeachers(){
-        //todo:сравнить объекты (сравнение в junit!!!)
         Teacher teacher1=new Teacher("Alex");
         Teacher teacher2=new Teacher("Dima");
         teacherDao.save(teacher1);

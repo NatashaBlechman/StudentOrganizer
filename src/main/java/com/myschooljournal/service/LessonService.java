@@ -3,15 +3,20 @@ package com.myschooljournal.service;
 import com.myschooljournal.dao.LessonDao;
 import com.myschooljournal.entity.Lesson;
 import com.myschooljournal.entity.Teacher;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 import java.util.List;
 
+@Service("lessonService")
 public class LessonService {
 	
 	public LessonDao lessonDao;
 
-	public LessonService(LessonDao lessonDao) {
+	@Autowired
+	public LessonService(@Qualifier("lessonDao") LessonDao lessonDao) {
 		super();
 		this.lessonDao = lessonDao;
 	}
@@ -30,10 +35,6 @@ public class LessonService {
 
 
 	public Lesson save(Lesson lesson) {
-		//if(lesson==null){
-			//return null;
-			//}
-		//return lessonDao.save(lesson);
 		return lesson==null?null:lessonDao.save(lesson);
 		
 		}
@@ -64,12 +65,9 @@ public class LessonService {
 	}
  
 	
-	public Lesson getByName(String name) {//null or exeption, регистр
+	public Lesson getByName(String name) {
 		return lessonDao.getByName(name);
 	}
 
-
-	
-	
 
 }

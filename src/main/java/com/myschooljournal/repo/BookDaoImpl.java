@@ -2,6 +2,7 @@ package com.myschooljournal.repo;
 
 import com.myschooljournal.dao.BookDao;
 import com.myschooljournal.entity.Book;
+import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -9,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+@Repository("bookDao")
 public class BookDaoImpl implements BookDao {
 
     private static Map<Long,Book> booksRepo=new HashMap<>();

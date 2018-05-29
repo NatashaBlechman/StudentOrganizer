@@ -4,6 +4,7 @@ package com.myschooljournal.repo;
 import com.myschooljournal.dao.LessonDao;
 import com.myschooljournal.entity.Lesson;
 import com.myschooljournal.entity.Teacher;
+import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -13,10 +14,9 @@ import java.util.stream.Collectors;
 
 import static com.myschooljournal.workservice.Validator.idValidation;
 
+@Repository("lessonDao")
 public class LessonDaoImpl implements LessonDao {
-	/**
-	 * 
-	 */
+
 	
 	private static Map<Long,Lesson> lessonRepo=new HashMap<>();//отображение БД
 	private static Long idGen=1L;

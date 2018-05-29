@@ -3,16 +3,21 @@ package com.myschooljournal.service;
 import com.myschooljournal.dao.ActivityDao;
 import com.myschooljournal.entity.Activity;
 import com.myschooljournal.entity.Lesson;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
 
+@Service("activityService")
 public class ActivityService {
 	
 	private ActivityDao activityDao;
 
-	public ActivityService(ActivityDao activityDao) {
+@Autowired
+	public ActivityService(@Qualifier("activityDao") ActivityDao activityDao) {
 		super();
 		this.activityDao = activityDao;
 	}
